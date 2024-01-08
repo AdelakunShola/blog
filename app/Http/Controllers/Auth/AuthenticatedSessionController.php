@@ -19,7 +19,7 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
-
+ 
     /**
      * Handle an incoming authentication request.
      */
@@ -29,7 +29,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $url = '';
+
+        if($request->user()->role === 'admin'){
+            $url = '/admin/dashboard';
+
+        }elseif($request->user()->role === 'user'){
+            $url = '/dashboard';
+
+        }
+
+        
+
+        return redirect()->intended($url);
     }
 
     /**
