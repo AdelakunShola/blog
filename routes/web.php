@@ -22,6 +22,13 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+//Admin Gorup Middleware
+Route::middleware(['auth','roles:admin'])->group(function(){
 
-Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+
+});
+//End Admin Gorup Middleware
+
+
 
