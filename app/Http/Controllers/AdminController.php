@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -78,7 +79,42 @@ class AdminController extends Controller
 
       return view('admin.admin_change_password',compact('profileData'));
 
+    }//end method
 
+
+    public function AdminPasswordUpdate(Request $request){
+
+      //validation
+      $request -> validate([
+         'old_password' => 'required',
+         'new_password' => 'required|confirmed'
+
+      ]);
+
+
+      if(!Hash::check($request->old_password, auth::user()->password)){
+
+         $notification = array(
+            'message' => 'Old Password Does Not Match',
+            'alert-type' => 'error',
+         );
+   
+         return back()->with($notification);
+
+      }
+
+
+      //update the new password
+      User::whereId(auth::user()->id)->update([
+         'password' => Hash::make($request->new_password)
+      ]);
+
+      $notification = array(
+         'message' => 'Password Updated Successfully',
+         'alert-type' => 'success',
+      );
+
+      return back()->with($notification);
 
     }//end method
 
