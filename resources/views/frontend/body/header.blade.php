@@ -679,13 +679,13 @@
 
                             <ul class="metabar-block">
                                 <li class="icon" style="display: inline-block; width: 70px; text-align: center;">
-                                    <a href="#" style="display: block;">
+                                    <a href="{{ route('login') }}" style="display: block;">
                                         <i class="fas fa-sign-in-alt" style="width: 10px; display: flex;"></i>
                                         <span style="display: inline-block;">Login</span>
                                     </a>
                                 </li>
                                 <li class="icon" style="display: flex; width: 70; text-align: center;">
-                                    <a href="#" style="display: block;">
+                                    <a href="{{ route('register') }}" style="display: block;">
                                         <i class="fas fa-user-plus" style="width: 10px; display: flex;"></i>
                                         <span style="display: inline-block;">Register</span>
                                     </a>
