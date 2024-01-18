@@ -86,7 +86,7 @@
       
    
     <div class="accordion__item">
-      <a class="accordion__item__title" href="#item3">
+      <a class="accordion__item__title" href="{{ route('user.profile.logout') }}">
         Logout
       </a>
       
