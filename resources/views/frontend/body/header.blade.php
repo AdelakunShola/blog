@@ -678,11 +678,26 @@
                                     </div>
                                 </form>
                             </div>
-                          
 
 
                             <ul class="metabar-block">
-                                <li class="icon" style="display: inline-block; width: 70px; text-align: center;">
+                          
+                 @auth
+
+                 <li style="display: inline-block;"><a href="{{ route('dashboard') }}"><img src="{{ (!empty($profileData->photo)) ? url('upload/user_images/'.$profileData->photo) : url('upload/no_image.jpg') }}" alt="Author Images"></a></li>
+                 
+
+                 <li class="icon" style="display: flex; width: 70; text-align: center;">
+                                    <a href="{{ route('user.profile.logout') }}" style="display: block;">
+                                        <i class="fas fa-user-plus" style="width: 10px; display: flex;"></i>
+                                        <span style="display: inline-block;">Logout</span>
+                                    </a>
+                                </li>
+             
+
+                 @else
+
+                 <li class="icon" style="display: inline-block; width: 70px; text-align: center;">
                                     <a href="{{ route('login') }}" style="display: block;">
                                         <i class="fas fa-sign-in-alt" style="width: 10px; display: flex;"></i>
                                         <span style="display: inline-block;">Login</span>
@@ -694,9 +709,11 @@
                                         <span style="display: inline-block;">Register</span>
                                     </a>
                                 </li>
-                               
-                                <li style="display: inline-block;"><a href="#"><img src="{{asset('frontend/assets/images/others/author.png')}}" alt="Author Images"></a></li>
-                            </ul>
+
+
+                 @endauth
+
+            </ul>
 
                             
                             

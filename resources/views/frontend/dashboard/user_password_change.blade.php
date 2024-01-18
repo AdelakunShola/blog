@@ -60,7 +60,7 @@
     <form action="{{ route('user.password.update') }}"  method="post"  enctype="multipart/form-data" >
      @csrf
             <label for="name">Old Password:</label>
-            <input type="password" name="old_password" id="old_password"  class="form-control @error('old_password') is-invalid @enderror" />
+            <input type="password" name="old_password" id="old_password"  class=" @error('old_password') is-invalid @enderror" />
 
             @error('old_password')
 
@@ -68,7 +68,7 @@
             @enderror
 
             <label for="name">New Password:</label>
-            <input type="password" name="new_password" id="new_password" class="form-control @error('new_password') is-invalid @enderror" />
+            <input type="password" name="new_password" id="new_password" class=" @error('new_password') is-invalid @enderror" />
 
              @error('new_password')
 
@@ -76,7 +76,7 @@
               @enderror
 
             <label for="name">confirm Password:</label>
-            <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control" />
+            <input type="password" name="new_password_confirmation" id="new_password_confirmation"  />
   
      
   

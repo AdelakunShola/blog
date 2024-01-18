@@ -73,7 +73,7 @@
 												<h6 class="mb-0">Photo</h6>
 											</div>
 											<div class="col-sm-9 text-secondary">
-												<input type="file" name="photo" class="form-control" id="image" />
+												<input type="file" name="photo" id="image" />
 											</div>
 										</div>
 
