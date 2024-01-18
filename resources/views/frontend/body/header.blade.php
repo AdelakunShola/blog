@@ -651,6 +651,10 @@
 
                                     <li><a href="home-lifestyle-blog.html">Lifestyle</a></li>
                                     <li><a href="home-tech-blog.html">Gadgets</a></li>
+
+                                    
+
+                                
                                 </ul>
                                 <!-- End Mainmanu Nav -->
                             </nav>
@@ -690,8 +694,12 @@
                                         <span style="display: inline-block;">Register</span>
                                     </a>
                                 </li>
+                               
                                 <li style="display: inline-block;"><a href="#"><img src="{{asset('frontend/assets/images/others/author.png')}}" alt="Author Images"></a></li>
                             </ul>
+
+                            
+                            
                             
                             <!-- Start Hamburger Menu  -->
                             <div class="hamburger-menu d-block d-xl-none">
