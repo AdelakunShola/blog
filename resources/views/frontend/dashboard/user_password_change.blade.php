@@ -52,18 +52,37 @@
      {{ $profileData->email }}</p>
   
   <div class="accordion">
-    <div class="">
-      <a class="accordion__item__title" href="{{ route('edit.profile') }}">
-        Update Profile
-      </a>
-     
-    </div>
-    <div class="">
-      <a class="accordion__item__title" href="{{ route('user.password.change') }}">
-        Password Update
-      </a>
+    <h4>Change your Password</h4>
+  
+   
       
-    </div>
+     
+    <form action="{{ route('user.password.update') }}"  method="post"  enctype="multipart/form-data" >
+     @csrf
+            <label for="name">Old Password:</label>
+            <input type="password" name="old_password" id="old_password"  class="form-control @error('old_password') is-invalid @enderror" />
+
+            @error('old_password')
+
+                <span class="text-danger"> {{$message}} </span>
+            @enderror
+
+            <label for="name">New Password:</label>
+            <input type="password" name="new_password" id="new_password" class="form-control @error('new_password') is-invalid @enderror" />
+
+             @error('new_password')
+
+              <span class="text-danger"> {{$message}} </span>
+              @enderror
+
+            <label for="name">confirm Password:</label>
+            <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control" />
+  
+     
+  
+            <input type="submit" value="Submit">
+          </form>
+      
     <div class="accordion__item">
       <a class="accordion__item__title" href="{{ route('user.profile.logout') }}">
         Logout
