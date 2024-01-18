@@ -2,6 +2,8 @@
 @section('main')
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <style>
        /* Existing styles remain unchanged */
 
@@ -46,11 +48,12 @@
   
   <div class="accordion">
    
-      <a class="accordion__item__title" href="{{ route('edit.profile') }}">
-        User Details
-      </a>
       
-        <form>
+        User Details
+      
+      
+        <form action="{{ route('profile.store') }}"  method="post"  enctype="multipart/form-data" >
+        @csrf
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" value="{{ $profileData->name }}" required>
 
@@ -59,8 +62,24 @@
   
             
   
-            <label for="photo">Upload Photo:</label>
-            <input type="file" id="photo" name="photo" accept="image/*">
+            <div class="mb-3">
+											<div class="col-sm-3">
+												<h6 class="mb-0">Photo</h6>
+											</div>
+											<div class="col-sm-9 text-secondary">
+												<input type="file" name="photo" class="form-control" id="image" />
+											</div>
+										</div>
+
+
+                                        <div class="mb-3">
+											<div class="col-sm-3">
+												<h6 class="mb-0"> </h6>
+											</div>
+											<div class="col-sm-9 text-secondary">
+                       <img id="showImage" src="{{ (!empty($profileData->photo)) ? url('upload/user_images/'.$profileData->photo) : url('upload/no_image.jpg') }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="80">
+											</div>
+										</div>
   
             <input type="submit" value="Update">
           </form>
@@ -75,5 +94,18 @@
    
   </div>
 </div>
+
+<script type="text/javascript" >
+    $(document).ready(function(){
+        $('#image').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function(e){
+                $('#showImage').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+
+    });
+});
+</script>
 
 @endsection

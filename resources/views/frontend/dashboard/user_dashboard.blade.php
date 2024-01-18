@@ -47,6 +47,7 @@
 @endphp
 <div class="container">
     <h1>User Dashboard</h1>
+    <img src="{{ (!empty($profileData->photo)) ? url('upload/user_images/'.$profileData->photo) : url('upload/no_image.jpg') }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
   <p>{{ $profileData->name }} <br/><br/>
      {{ $profileData->email }}</p>
   
