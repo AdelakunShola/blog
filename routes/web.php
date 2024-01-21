@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\CategoryController;
 
 
 
@@ -40,6 +41,23 @@ Route::middleware(['auth','roles:admin'])->group(function(){
 
 });
 //End Admin Gorup Middleware
+
+
+Route::middleware(['auth','roles:admin'])->group(function(){
+
+
+    //All Category routes
+Route::controller(CategoryController::class)->group(function(){
+
+    Route::get('/all/category', 'AllCategory')->name('all.category');
+
+});
+  //End All Category routes
+
+});
+//End Admin Gorup Middleware
+
+
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
