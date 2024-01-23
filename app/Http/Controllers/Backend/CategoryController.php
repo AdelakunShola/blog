@@ -23,7 +23,7 @@ class CategoryController extends Controller
 
          $image = $request->file('image');
          $name_gen = date('YmdHi').$image->getClientOriginalName();
-         Image::make($image)->resize(50,70)->save('upload/category/'.$name_gen);
+         Image::make($image)->resize(540,540)->save('upload/category/'.$name_gen);
          $save_url = 'upload/category/'.$name_gen;
 
          Category:: insert([
@@ -47,5 +47,47 @@ class CategoryController extends Controller
 
         $categories = Category::find($id);
         return response()->json($categories);
-    }
+
+    }//end method
+
+
+
+    public function UpdateCategory(Request $request){
+
+        $cat_id = $request->cat_id;
+
+        $image = $request->file('image');
+        $name_gen = date('YmdHi').$image->getClientOriginalName();
+        Image::make($image)->resize(540,540)->save('upload/category/'.$name_gen);
+        $save_url = 'upload/category/'.$name_gen;
+
+        Category:: find($cat_id)->update([
+           'category_name' => $request->category_name,
+           'category_slug' => strtolower(str_replace(' ','-', $request->category_name)),
+           'image' => $save_url,
+           
+        ]);
+
+        $notification = array(
+           'message' => 'Category Updated Successfully',
+           'alert-type' => 'success',
+        );
+  
+        return redirect()->back()->with($notification);
+
+   }//end method
+
+
+   public function DeleteCategory($id){
+
+         Category:: find($id)->delete();
+
+         $notification = array(
+            'message' => 'Category Deleted Successfully',
+            'alert-type' => 'success',
+         );
+   
+         return redirect()->back()->with($notification);
+
+   }//end method
 }

@@ -48,7 +48,7 @@
 
 											<button type="button" class="btn btn-warning px-3 radius-30" data-bs-toggle="modal" data-bs-target="#category" id="{{ $item->id }}" onclick="categoryEdit(this.id) " >Edit</button>
 
-											<a href="" class="btn btn-danger px-3 radius-30">Delete</a>
+											<a href="{{ route('delete.category', $item->id ) }}" class="btn btn-danger px-3 radius-30">Delete</a>
 										</td>
 									
 									</tr>
@@ -148,10 +148,10 @@
 													<div class="modal-body">
 
 
-										<form action="{{ route('category.store') }}"  method="post"  enctype="multipart/form-data" >
+										<form action="{{ route('update.category') }}"  method="post"  enctype="multipart/form-data" >
                                             @csrf
 
-											<input type="text" name="cat_id" id="cat_id">
+											<input type="hidden" name="cat_id" id="cat_id">
 
 										<div class="row mb-3">
 											<div class="col-sm-3">
