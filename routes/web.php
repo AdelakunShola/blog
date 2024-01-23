@@ -51,6 +51,7 @@ Route::controller(CategoryController::class)->group(function(){
 
     Route::get('/all/category', 'AllCategory')->name('all.category');
     Route::post('/category/store', 'StoreCategory')->name('category.store');
+    Route::get('/category/edit/{id}', 'EditCategory');
 
 });
   //End All Category routes

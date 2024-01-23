@@ -40,9 +40,12 @@ class CategoryController extends Controller
    
          return redirect()->back()->with($notification);
 
-
-
-
-
     }//end method
+
+
+    public function EditCategory($id){
+
+        $categories = Category::find($id);
+        return response()->json($categories);
+    }
 }

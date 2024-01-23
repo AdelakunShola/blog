@@ -44,7 +44,10 @@
 										<td>{{ $item->category_name }}</td>
 										<td>{{ $item->category_slug }}</td>
 										<td>
-											<a href="" class="btn btn-warning px-3 radius-30">Edit</a>
+										
+
+											<button type="button" class="btn btn-warning px-3 radius-30" data-bs-toggle="modal" data-bs-target="#category" id="{{ $item->id }}" onclick="categoryEdit(this.id) " >Edit</button>
+
 											<a href="" class="btn btn-danger px-3 radius-30">Delete</a>
 										</td>
 									
@@ -71,7 +74,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">
@@ -129,7 +132,76 @@
 											</div>
 										</div>
 
-										<script type="text/javascript" >
+
+
+
+
+						
+										<!-- Category Edit Modal -->
+										<div class="modal fade" id="category" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="modal-body">
+
+
+										<form action="{{ route('category.store') }}"  method="post"  enctype="multipart/form-data" >
+                                            @csrf
+
+											<input type="text" name="cat_id" id="cat_id">
+
+										<div class="row mb-3">
+											<div class="col-sm-3">
+												<h6 class="mb-0">Category Name</h6>
+											</div>
+											<div class="col-sm-9 text-secondary">
+												<input type="text" name="category_name" class="form-control" id="cat"  />
+											</div>
+										</div>
+										
+										
+										<div class="row mb-3">
+											<div class="col-sm-3">
+												<h6 class="mb-0">Category Image</h6>
+											</div>
+											<div class="col-sm-9 text-secondary">
+												<input type="file" name="image" class="form-control" id="image" />
+											</div>
+										</div>
+ 
+
+                                        <div class="row mb-3">
+											<div class="col-sm-3">
+												<h6 class="mb-0"> </h6>
+											</div>
+											<div class="col-sm-9 text-secondary">
+                                            <img id="image-preview" src="url('upload/category/'.$category->image) : url('upload/no_image.jpg') }}" alt="" class="rounded-circle p-1 bg-primary" width="80">
+											</div>
+										</div>
+
+
+										<div class="row">
+											<div class="col-sm-3"></div>
+											<div class="col-sm-9 text-secondary">
+												<input type="submit" class="btn btn-primary px-4" value="Save Changes" />
+											</div>
+										</div>
+                                        </form>
+
+
+
+														</div>
+													
+												</div>
+											</div>
+										</div>
+
+
+
+	<script type="text/javascript" >
     $(document).ready(function(){
         $('#image').change(function(e){
             var reader = new FileReader();
@@ -141,4 +213,42 @@
     });
 });
 </script>
+
+
+<script type="text/javascript" >
+	function categoryEdit(id){
+		$.ajax({
+			type: 'Get',
+			url:'/category/edit/'+id,
+			dataType: 'json',
+
+			success:function(data){
+				// console.log(data);
+
+				$('#cat_id').val(data.id);
+				$('#cat').val(data.category_name);
+
+				$('#image-preview').attr('src', '/' + data.image);
+
+			}
+		})
+	}
+
+	</script>
+
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
