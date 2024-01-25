@@ -32,6 +32,10 @@
 	<!-- toaster css -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
+
+		<!-- editor -->
+	<link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+
 	<!-- Datatable css -->
 	<link href="{{asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
 	<title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
@@ -85,6 +89,14 @@
 
 <script src="{{asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
+
+
+<!-- Froala Editor JS-->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
+    <script>
+        // init Froala Editor
+        new FroalaEditor('#editor');
+    </script>
 
 	<script>
 		$(document).ready(function() {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\BlogPostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,23 @@ Route::controller(CategoryController::class)->group(function(){
     Route::get('/category/edit/{id}', 'EditCategory');
     Route::post('/update/category', 'UpdateCategory')->name('update.category');
     Route::get('/delete/category/{id}', 'DeleteCategory')->name('delete.category');
+
+});
+  //End All Category routes
+
+
+
+
+  //All blog post routes
+Route::controller(BlogPostController::class)->group(function(){
+
+    Route::get('/all/blog/post', 'AllBlogPost')->name('all.blog.post');
+    Route::get('/add/blog/post', 'AddBlogPost')->name('add.blog.post');
+    Route::post('/store/blog/post', 'StoreBlogPost')->name('store.blog.post');
+    Route::get('/edit/blog/post/{id}', 'EditBlogPost')->name('edit.blog.post');
+    Route::post('/update/blog/post', 'UpdateBlogPost')->name('update.blog.post');
+    Route::get('/delete/blog/post/{id}', 'DeleteBlogPost')->name('delete.blog.post');
+    
 
 });
   //End All Category routes
