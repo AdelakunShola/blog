@@ -15,4 +15,10 @@ class BlogPost extends Model
         return $this->belongsTo(Category::class, 'blogcat_id', 'id');
     }
 
+
+    public function user(){
+
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
 }

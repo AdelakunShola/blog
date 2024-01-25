@@ -51,7 +51,7 @@
                                     <div class="border rounded-4 text-center p-4 mb-4">
 						              <h5>Description</h5>
 						                <div id="editor" name="long_desc"> 
-                                        {{ $post->long_desc }}
+                                        {!! $post->long_desc !!}
 						              </div>
 						            </div> 
                                     <input type="hidden"  id="long_desc" name="long_desc" value="">
