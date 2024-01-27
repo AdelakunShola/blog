@@ -121,29 +121,32 @@
                                 <!-- Start Comment Respond  -->
                                 <div class="comment-respond">
                                     <h4 class="title">Post a comment</h4>
-                                    <form action="#">
+
+                                    @php
+                                    if(Auth::check()){
+                                        $id= Auth::user()->id;
+                                        $userData = App\Models\User::find($id);
+                                    }else{
+                                        $userData = null;
+
+                                    }
+
+                                    @endphp
+
+                                    @auth
+
+                                    <form method="POST"   action="{{ route('store.comment') }}">
+                                        @csrf
+
+                                    <input type="hidden" name="post_id" value="{{ $blog->id }}">
+                                    <input type="hidden" name="user_id" value="{{ $userData->id }}">
+
                                         <p class="comment-notes"><span id="email-notes">Your email address will not be
                                                 published.</span> Required fields are marked <span
                                                 class="required">*</span></p>
                                         <div class="row row--10">
-                                            <div class="col-lg-4 col-md-4 col-12">
-                                                <div class="form-group">
-                                                    <label for="name">Your Name</label>
-                                                    <input id="name" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-12">
-                                                <div class="form-group">
-                                                    <label for="email">Your Email</label>
-                                                    <input id="email" type="email">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-12">
-                                                <div class="form-group">
-                                                    <label for="website">Your Website</label>
-                                                    <input id="website" type="text">
-                                                </div>
-                                            </div>
+                                         
+                                           
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="message">Leave a Reply</label>
@@ -159,11 +162,20 @@
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="form-submit cerchio">
-                                                    <input name="submit" type="submit" id="submit" class="axil-button button-rounded" value="Post Comment">
+                                                    <input button="submit" name="submit" type="submit" id="submit" class="axil-button button-rounded" value="Post Comment">
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
+
+                                    @else
+
+                                    <p>Please <a href="{{ route('login') }}">Login</a> to add a comment</p>
+
+                                    @endauth
+
+
+                                   
                                 </div>
                                 <!-- End Comment Respond  -->
 

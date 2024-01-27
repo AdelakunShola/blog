@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CommentController;
 
 
 
@@ -93,6 +94,16 @@ Route::controller(BlogPostController::class)->group(function(){
   Route::get('/blog/category/list/{id}', 'categoryList');
 
   
+
+});
+
+
+
+
+///frontend details url all route 
+Route::controller(CommentController::class)->group(function(){
+
+  Route::post('/store/comment', 'StoreComment')->name('store.comment');
 
 });
 
