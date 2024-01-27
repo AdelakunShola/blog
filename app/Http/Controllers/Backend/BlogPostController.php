@@ -140,9 +140,11 @@ public function DeleteBlogPost($id){
 //////frontend details page
 
  public function BlogDetails($slug){
-
+  
    $blog = BlogPost::where('post_slug', $slug )->first();
-   return view('frontend.blog.blog_details', compact('blog'));
+   $bcategory = Category::latest()->limit(4)->get();
+   $lpost = BlogPost::latest()->limit(4)->get();
+   return view('frontend.blog.blog_details', compact('blog','bcategory','lpost'));
 
 
  }//end method
