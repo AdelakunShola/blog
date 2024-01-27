@@ -157,8 +157,9 @@ public function DeleteBlogPost($id){
    $blog = BlogPost::where('blogcat_id', $id)->get();
    $bcategory = Category::latest()->limit(4)->get();
    $lpost = BlogPost::latest()->limit(4)->get();
+   $namecat = Category::where('id',$id)->first();
 
-   return view('frontend.blog.blog_cat_list', compact('blog', 'bcategory', 'lpost'));
+   return view('frontend.blog.blog_cat_list', compact('blog', 'bcategory', 'lpost','namecat'));
 }//end method
 
 

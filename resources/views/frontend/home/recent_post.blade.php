@@ -1,6 +1,8 @@
 @php
 
-$blog = App\Models\BlogPost::latest()->get();
+$blog = App\Models\BlogPost::latest()->paginate(3);
+$bcategory = App\Models\Category::latest()->limit(4)->get();
+$lpost = App\Models\BlogPost::latest()->limit(4)->get();
 
 @endphp
 
@@ -27,7 +29,7 @@ $blog = App\Models\BlogPost::latest()->get();
 
                         <div class="content-block post-list-view axil-control is-active mt--30">
                             <div class="post-thumbnail">
-                                <a href="post-details.html">
+                                <a href="{{ url('blog/details/'.$item->post_slug) }}">
                                     <img src="{{ asset($item->post_image)}}" alt="Post Images">
                                 </a>
                             </div>
@@ -59,7 +61,7 @@ $blog = App\Models\BlogPost::latest()->get();
                                         </div>
                                     </div>
                                     <ul class="social-share-transparent justify-content-end">
-                                        <li><a href="#"><p>Read more</p></a></li>
+                                        <li><a href="{{ url('blog/details/'.$item->post_slug) }}"><p>Read more</p></a></li>
                                        
                                     </ul>
                                 </div>
@@ -67,6 +69,8 @@ $blog = App\Models\BlogPost::latest()->get();
                         </div>
                         <!-- End Post List  -->
                         @endforeach
+
+                        {{ $blog->links('vendor.pagination.default') }}
 
                        
 

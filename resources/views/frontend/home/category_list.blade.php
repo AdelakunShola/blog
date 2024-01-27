@@ -1,3 +1,11 @@
+@php
+
+$blog = App\Models\BlogPost::latest()->get();
+$bcategory = App\Models\Category::latest()->get();
+$lpost = App\Models\BlogPost::latest()->limit(4)->get();
+
+@endphp
+
 <div class="axil-categories-list axil-section-gap bg-color-grey">
             <div class="container">
                 <div class="row align-items-center mb--30">
@@ -17,95 +25,26 @@
                         <!-- Start List Wrapper  -->
                         <div class="list-categories d-flex flex-wrap">
 
+                        @foreach($bcategory as $cat)
                             <!-- Start Single Category  -->
                             <div class="single-cat">
                                 <div class="inner">
                                     <a href="#">
                                         <div class="thumbnail">
-                                            <img src="{{asset('frontend/assets/images/post-images/post-sm-01.jpg')}}" alt="post categories images">
+                                            <img src="{{$cat->image}}" alt="post categories images">
                                         </div>
                                         <div class="content">
-                                            <h5 class="title">Sports &#38; Fitness </h5>
+                                            <h5 class="title">{{$cat->category_name}}</h5>
                                         </div>
                                     </a>
                                 </div>
                             </div>
                             <!-- End Single Category  -->
+                            @endforeach
 
-                            <!-- Start Single Category  -->
-                            <div class="single-cat">
-                                <div class="inner">
-                                    <a href="#">
-                                        <div class="thumbnail">
-                                            <img src="{{asset('frontend/assets/images/post-images/post-sm-02.jpg')}}" alt="post categories images">
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title">Travel</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- End Single Category  -->
+                          
 
-                            <!-- Start Single Category  -->
-                            <div class="single-cat">
-                                <div class="inner">
-                                    <a href="#">
-                                        <div class="thumbnail">
-                                            <img src="{{asset('frontend/assets/images/post-images/post-sm-03.jpg')}}" alt="post categories images">
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title">lifestyle</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- End Single Category  -->
-
-                            <!-- Start Single Category  -->
-                            <div class="single-cat">
-                                <div class="inner">
-                                    <a href="#">
-                                        <div class="thumbnail">
-                                            <img src="{{asset('frontend/assets/images/post-images/post-sm-04.jpg')}}" alt="post categories images">
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title">Health</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- End Single Category  -->
-
-                            <!-- Start Single Category  -->
-                            <div class="single-cat">
-                                <div class="inner">
-                                    <a href="#">
-                                        <div class="thumbnail">
-                                            <img src="{{asset('frontend/assets/images/post-images/post-sm-05.jpg')}}" alt="post categories images">
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title">Animals</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- End Single Category  -->
-
-                            <!-- Start Single Category  -->
-                            <div class="single-cat">
-                                <div class="inner">
-                                    <a href="#">
-                                        <div class="thumbnail">
-                                            <img src="{{asset('frontend/assets/images/post-images/post-sm-06.jpg')}}" alt="post categories images">
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title">Food &#38; Drink</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- End Single Category  -->
+                          
 
                         </div>
                         <!-- Start List Wrapper  -->

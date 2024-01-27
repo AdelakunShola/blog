@@ -23,7 +23,7 @@ class CategoryController extends Controller
 
          $image = $request->file('image');
          $name_gen = date('YmdHi').$image->getClientOriginalName();
-         Image::make($image)->resize(540,540)->save('upload/category/'.$name_gen);
+         Image::make($image)->resize(70,50)->save('upload/category/'.$name_gen);
          $save_url = 'upload/category/'.$name_gen;
 
          Category:: insert([
@@ -59,7 +59,7 @@ class CategoryController extends Controller
 
         $image = $request->file('image');
         $name_gen = date('YmdHi').$image->getClientOriginalName();
-        Image::make($image)->resize(540,540)->save('upload/category/'.$name_gen);
+        Image::make($image)->resize(80,70)->save('upload/category/'.$name_gen);
         $save_url = 'upload/category/'.$name_gen;
 
         Category:: find($cat_id)->update([
