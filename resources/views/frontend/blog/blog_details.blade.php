@@ -305,7 +305,7 @@
                                 <ul>
                                     @foreach($bcategory as $cat)
                                     <li class="cat-item">
-                                        <a href="#" class="inner">
+                                        <a href="{{ url('blog/category/list/'.$cat->id) }}" class="inner">
                                             <div class="thumbnail">
                                                 <img src="{{$cat->image}}" alt="">
                                             </div>

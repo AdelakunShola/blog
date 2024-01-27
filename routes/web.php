@@ -90,6 +90,7 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
 Route::controller(BlogPostController::class)->group(function(){
 
   Route::get('/blog/details/{slug}', 'BlogDetails');
+  Route::get('/blog/category/list/{id}', 'categoryList');
 
   
 

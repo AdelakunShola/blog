@@ -10,6 +10,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
+use function PHPSTORM_META\map;
+
 class BlogPostController extends Controller
 {
      public function AllBlogPost(){
@@ -148,6 +150,17 @@ public function DeleteBlogPost($id){
 
 
  }//end method
+
+
+ public function categoryList($id) {
+   // Your existing code here
+   $blog = BlogPost::where('blogcat_id', $id)->get();
+   $bcategory = Category::latest()->limit(4)->get();
+   $lpost = BlogPost::latest()->limit(4)->get();
+
+   return view('frontend.blog.blog_cat_list', compact('blog', 'bcategory', 'lpost'));
+}//end method
+
 
 
 }
