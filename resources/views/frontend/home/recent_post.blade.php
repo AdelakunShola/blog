@@ -41,7 +41,7 @@ $blog = App\Models\BlogPost::latest()->get();
                                         </a>
                                     </div>
                                 </div>
-                                <h4 class="title"><a href="post-details.html">{{ $item->post_title }}</a></h4>
+                                <h4 class="title"><a href="{{ url('blog/details/'.$item->post_slug) }}">{{ $item->post_title }}</a></h4>
                                 <div class="post-meta-wrapper">
                                     <div class="post-meta">
                                         <div class="content">

@@ -86,4 +86,16 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
 
 
 
+///frontend details url all route 
+Route::controller(BlogPostController::class)->group(function(){
+
+  Route::get('/blog/details/{slug}', 'BlogDetails');
+
+  
+
+});
+
+
+
+
 

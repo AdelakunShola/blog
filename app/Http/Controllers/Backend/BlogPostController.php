@@ -136,4 +136,16 @@ public function DeleteBlogPost($id){
 }//end method
 
 
+
+//////frontend details page
+
+ public function BlogDetails($slug){
+
+   $blog = BlogPost::where('post_slug', $slug )->first();
+   return view('frontend.blog.blog_details', compact('blog'));
+
+
+ }//end method
+
+
 }
