@@ -178,28 +178,31 @@
                                    
                                 </div>
                                 <!-- End Comment Respond  -->
-
+                            @php
+                            $comment = App\Models\Comment::where('post_id', $blog->id)->where('status','1')->get();
+                            @endphp
                                 <!-- Start Comment Area  -->
                                 <div class="axil-comment-area">
                                     <h4 class="title">2 comments</h4>
                                     <ul class="comment-list">
                                         <!-- Start Single Comment  -->
+                                        @foreach($comment as $comm)
                                         <li class="comment">
                                             <div class="comment-body">
                                                 <div class="single-comment">
                                                     <div class="comment-img">
-                                                        <img src="assets/images/post-images/author/author-b2.png" alt="Author Images">
+                                                        <img src="{{ (!empty($comm->user->photo)) ? url('upload/user_images/'.$comm->user->photo) : url('upload/no_image.jpg') }}" alt="Author Images" style="width:50px; height:50px; ">
                                                     </div>
                                                     <div class="comment-inner">
                                                         <h6 class="commenter">
                                                             <a class="hover-flip-item-wrapper" href="#">
                                                                 <span class="hover-flip-item">
-                                                                    <span data-text="Cameron Williamson">Cameron Williamson</span>
+                                                                    <span data-text="{{$comm->user->name}}">{{$comm->user->name}}</span>
                                                                 </span>
                                                             </a>
                                                         </h6>
                                                         <div class="comment-meta">
-                                                            <div class="time-spent">Nov 23, 2018 at 12:23 pm</div>
+                                                            <div class="time-spent">{{ $comm->created_at->format('M d Y') }}</div>
                                                             <div class="reply-edit">
                                                                 <div class="reply">
                                                                     <a class="comment-reply-link hover-flip-item-wrapper" href="#">
@@ -211,95 +214,18 @@
                                                             </div>
                                                         </div>
                                                         <div class="comment-text">
-                                                            <p class="b2">Duis hendrerit velit scelerisque felis tempus, id porta
-                                                                libero venenatis. Nulla facilisi. Phasellus viverra
-                                                                magna commodo dui lacinia tempus. Donec malesuada nunc
-                                                                non dui posuere, fringilla vestibulum urna mollis.
-                                                                Integer condimentum ac sapien quis maximus. </p>
+                                                            <p class="b2">{{$comm->message}}</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <ul class="children">
-                                                <!-- Start Single Comment  -->
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <div class="single-comment">
-                                                            <div class="comment-img">
-                                                                <img src="assets/images/post-images/author/author-b3.png" alt="Author Images">
-                                                            </div>
-                                                            <div class="comment-inner">
-                                                                <h6 class="commenter">
-                                                                    <a class="hover-flip-item-wrapper" href="#">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="Rahabi Khan">Rahabi Khan</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </h6>
-                                                                <div class="comment-meta">
-                                                                    <div class="time-spent">Nov 23, 2018 at 12:23 pm
-                                                                    </div>
-                                                                    <div class="reply-edit">
-                                                                        <div class="reply">
-                                                                            <a class="comment-reply-link hover-flip-item-wrapper" href="#">
-                                                                                <span class="hover-flip-item">
-                                                                                    <span data-text="Reply">Reply</span>
-                                                                                </span>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="comment-text">
-                                                                    <p class="b2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse lobortis cursus lacinia. Vestibulum vitae leo id diam pellentesque ornare.</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!-- End Single Comment  -->
-                                            </ul>
+                                            
                                         </li>
+                                        @endforeach
+                                        
                                         <!-- End Single Comment  -->
 
-                                        <!-- Start Single Comment  -->
-                                        <li class="comment">
-                                            <div class="comment-body">
-                                                <div class="single-comment">
-                                                    <div class="comment-img">
-                                                        <img src="assets/images/post-images/author/author-b2.png" alt="Author Images">
-                                                    </div>
-                                                    <div class="comment-inner">
-                                                        <h6 class="commenter">
-                                                            <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="Rahabi Khan">Rahabi Khan</span>
-                                                                </span>
-                                                            </a>
-                                                        </h6>
-                                                        <div class="comment-meta">
-                                                            <div class="time-spent">Nov 23, 2018 at 12:23 pm</div>
-                                                            <div class="reply-edit">
-                                                                <div class="reply">
-                                                                    <a class="comment-reply-link hover-flip-item-wrapper" href="#">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="Reply">Reply</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="comment-text">
-                                                            <p class="b2">Duis hendrerit velit scelerisque felis tempus, id porta
-                                                                libero venenatis. Nulla facilisi. Phasellus viverra
-                                                                magna commodo dui lacinia tempus. Donec malesuada nunc
-                                                                non dui posuere, fringilla vestibulum urna mollis.
-                                                                Integer condimentum ac sapien quis maximus. </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- End Single Comment  -->
+                                    
                                     </ul>
                                 </div>
                                 <!-- End Comment Area  -->
