@@ -77,6 +77,14 @@ Route::controller(BlogPostController::class)->group(function(){
 });
   //End All Category routes
 
+
+  ///admin comment all route 
+Route::controller(CommentController::class)->group(function(){
+
+  Route::get('/all/comment', 'AllComment')->name('all.comment');
+
+});
+
 });
 //End Admin Gorup Middleware
 

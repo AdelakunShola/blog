@@ -30,4 +30,11 @@ class CommentController extends Controller
 
 
     }///end method
+
+
+    public function AllComment(){
+        $allcomment = Comment::latest()->get();
+        return view('backend.comment.all_comment', compact('allcomment'));
+
+    }///end method
 }

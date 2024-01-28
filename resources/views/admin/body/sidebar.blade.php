@@ -56,6 +56,22 @@
 				</li>
 
 
+				<li>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class="bx bx-category"></i>
+						</div>
+						<div class="menu-title">Manage Comments</div>
+					</a>
+					<ul>
+						<li> <a href="{{ route('all.comment') }}"><i class='bx bx-radio-circle'></i>All Comment</a>
+						
+						</li>
+						
+						
+					</ul>
+				</li>
+
+
 				<li class="menu-label">UI Elements</li>
 				
 				<li>
