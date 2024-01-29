@@ -61,7 +61,7 @@
 											<div class="col-sm-9 text-secondary">
 												<input type="file" name="post_image" class="form-control" id="image" />
 											</div>
-										</div> 
+							 			</div> 
 
 
                                         <div class="row mb-3">
