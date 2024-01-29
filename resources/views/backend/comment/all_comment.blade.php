@@ -1,6 +1,12 @@
 @extends('admin.admin_dashboard')
 @section('admin')
 
+<style>
+    .large-checkbox{
+        transform: scale(1.5);
+    }
+</style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
@@ -46,9 +52,10 @@
 										<td>
 										
 
-											<button type="button" class="btn btn-warning px-3 radius-30" data-bs-toggle="modal" data-bs-target="#category" id="{{ $item->id }}" onclick="categoryEdit(this.id) " >Edit</button>
-
-											<a href="{{ route('delete.category', $item->id ) }}" class="btn btn-danger px-3 radius-30">Delete</a>
+                                        <div class="form-check form-switch">
+									<input class="form-check-input large-checkbox status-toggle" type="checkbox" data-comment-id= "{{$item->id }}" {{ $item->status ? 'checked' : '' }} id="flexSwitchCheckChecked" >
+									<label class="form-check-label" for="flexSwitchCheckChecked"></label>
+								</div>
 										</td>
 									
 									</tr>
@@ -74,7 +81,35 @@
 
 
 
+<script type="text/javascript">
 
+$(document).ready(function(){
+        $('.status-toggle').on('change', function(){
+            var commentId = $(this).data('comment-id');
+            var isChecked = $(this).is(':checked');
+
+            // Send an ajax request to update status 
+            $.ajax({
+                url: "{{ route('update.comment.status') }}",
+                method: "POST",
+                data: {
+                    comment_id: commentId,
+                    is_checked: isChecked ? 1 : 0,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(response){
+                    toastr.success(response.message);
+
+                },
+                error: function(){
+
+                }
+            }); 
+
+        });
+    });
+
+    </script>
 
 
 
