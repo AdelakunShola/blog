@@ -82,6 +82,7 @@ Route::controller(BlogPostController::class)->group(function(){
 Route::controller(CommentController::class)->group(function(){
 
   Route::get('/all/comment', 'AllComment')->name('all.comment');
+  Route::post('/update/comment/status', 'UpdateComment')->name('update.comment.status');
 
 });
 
