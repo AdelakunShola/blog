@@ -62,7 +62,7 @@
 												<input type="file" name="post_image" class="form-control" id="image" />
 											</div>
 							 			</div> 
-
+     
    
                                         <div class="row mb-3">
 											<div class="col-sm-3">
