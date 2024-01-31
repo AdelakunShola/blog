@@ -39,6 +39,9 @@ class BlogPostController extends Controller
            'post_title' => $request->post_title,
            'post_slug' => strtolower(str_replace(' ','-', $request->post_title)),
            'long_desc' => $request->long_desc,
+           'slider' => $request->slider,
+           'featured' => $request->featured,
+           'popular' => $request->popular,
            'post_image' => $save_url,
            'created_at' => Carbon::now(),
            
