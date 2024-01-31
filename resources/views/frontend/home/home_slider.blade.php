@@ -1,6 +1,6 @@
 @php
 
-$slider = App\Models\BlogPost::where('slider',1)->get();
+$slider = App\Models\BlogPost::where('slider',1)->limit(4)->get();
 
 @endphp
 
@@ -18,7 +18,7 @@ $slider = App\Models\BlogPost::where('slider',1)->get();
                                 <div class="content-block">
                                     <!-- Start Post Thumbnail  -->
                                     <div class="post-thumbnail">
-                                        <a href="post-details.html">
+                                        <a href="{{ url('blog/details/'.$item->post_slug) }}">
                                             <img src="{{ asset($item->post_image)}}" alt="Post Images" style="height: 600px;">
                                         </a>
                                     </div>

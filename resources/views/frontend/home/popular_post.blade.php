@@ -1,3 +1,8 @@
+@php
+
+$popular = App\Models\BlogPost::where('popular',1)->limit(4)->get();
+
+@endphp
 <div class="axil-post-grid-area axil-section-gap bg-color-grey">
             <div class="container">
                 <div class="row axil-section-gapBottom">
@@ -41,66 +46,18 @@
                             <!-- Start Single Tab Content  -->
                             <div class="single-post-grid tab-pane fade show active" id="gridone" role="tabpanel">
                                 <div class="row">
-                                    <div class="col-xl-7 col-lg-7 col-md-12 col-12">
-                                        <!-- Start Post Grid  -->
-                                        <div class="content-block post-grid post-grid-large mt--30">
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="{{asset('frontend/assets/images/post-images/post-grid-01.jpg')}}" alt="Post Images">
-                                                </a>
-                                            </div>
-                                            <div class="post-grid-content">
-                                                <div class="post-content">
-                                                    <div class="post-cat">
-                                                        <div class="post-cat-list">
-                                                            <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="DESIGN">DESIGN</span>
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="title"><a href="post-details.html">Get Ready To Up Your
-                                                            Creative Game With The New DJI Mavic Air 2</a></h3>
-                                                    <div class="post-meta-wrapper">
-                                                        <div class="post-meta">
-                                                            <div class="post-author-avatar border-rounded">
-                                                                <img src="{{asset('frontend/assets/images/post-images/author/author-image-2.png')}}" alt="Author Images">
-                                                            </div>
-                                                            <div class="content">
-                                                                <h6 class="post-author-name">
-                                                                    <a class="hover-flip-item-wrapper" href="author.html">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="Ismat Jahan">Ismat Jahan</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </h6>
-                                                                <ul class="post-meta-list">
-                                                                    <li>Feb 17, 2019</li>
-                                                                    <li>300k Views</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <ul class="social-share-transparent justify-content-end">
-                                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                            <li><a href="#"><i class="fas fa-link"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Start Post Grid  -->
-                                    </div>
+
+                                @foreach($popular as $item)
+                                   
                                     <div class="col-xl-5 col-lg-5 col-md-12 col-12">
                                         <div class="row">
+                                            
                                             <div class="col-xl-12 col-lg-12 col-md-6 col-12">
                                                 <!-- Start Post Grid  -->
                                                 <div class="content-block post-grid mt--30">
                                                     <div class="post-thumbnail">
-                                                        <a href="post-details.html">
-                                                            <img src="{{asset('frontend/assets/images/post-images/post-grid-07.jpg')}}" alt="Post Images">
+                                                        <a href="{{ url('blog/details/'.$item->post_slug) }}">
+                                                            <img src="{{ asset($item->post_image)}}" alt="Post Images">
                                                         </a>
                                                     </div>
                                                     <div class="post-grid-content">
@@ -109,40 +66,12 @@
                                                                 <div class="post-cat-list">
                                                                     <a class="hover-flip-item-wrapper" href="#">
                                                                         <span class="hover-flip-item">
-                                                                            <span data-text="LIFESTYLE">LIFESTYLE</span>
+                                                                            <span data-text="{{$item['blog']['category_name']}}">{{$item['blog']['category_name']}}</span>
                                                                         </span>
                                                                     </a>
                                                                 </div>
                                                             </div>
-                                                            <h4 class="title"><a href="post-details.html">The underrated
-                                                                    design book
-                                                                    that transformed the</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Start Post Grid  -->
-                                            </div>
-                                            <div class="col-xl-12 col-lg-12 col-md-6 col-12">
-                                                <!-- Start Post Grid  -->
-                                                <div class="content-block post-grid mt--30">
-                                                    <div class="post-thumbnail">
-                                                        <a href="post-details.html">
-                                                            <img src="{{asset('frontend/assets/images/post-images/post-grid-08.jpg')}}" alt="Post Images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-grid-content">
-                                                        <div class="post-content">
-                                                            <div class="post-cat">
-                                                                <div class="post-cat-list">
-                                                                    <a class="hover-flip-item-wrapper" href="#">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="TRAVEL">TRAVEL</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <h4 class="title"><a href="post-details.html">Apple reimagines
-                                                                    the iPhone experience with iOS 14 </a></h4>
+                                                            <h4 class="title"><a href="{{ url('blog/details/'.$item->post_slug) }}">{{ $item->post_title }}</a></h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -150,360 +79,12 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    @endforeach
                                 </div>
                             </div>
                             <!-- End Single Tab Content  -->
 
-                            <!-- Start Single Tab Content  -->
-                            <div class="single-post-grid tab-pane fade" id="gridtwo" role="tabpanel">
-                                <div class="row">
-                                    <div class="col-xl-7 col-lg-7 col-md-12 col-12">
-                                        <!-- Start Post Grid  -->
-                                        <div class="content-block post-grid post-grid-large mt--30">
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="{{asset('frontend/assets/images/post-images/post-grid-09.jpg')}}" alt="Post Images">
-                                                </a>
-                                            </div>
-                                            <div class="post-grid-content">
-                                                <div class="post-content">
-                                                    <div class="post-cat">
-                                                        <div class="post-cat-list">
-                                                            <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="DESIGN">DESIGN</span>
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="title"><a href="post-details.html">Get Ready To Up Your
-                                                            Creative Game With The New DJI Mavic Air 2</a></h3>
-                                                    <div class="post-meta-wrapper">
-                                                        <div class="post-meta">
-                                                            <div class="post-author-avatar border-rounded">
-                                                                <img src="{{asset('frontend/assets/images/post-images/author/author-image-2.png')}}" alt="Author Images">
-                                                            </div>
-                                                            <div class="content">
-                                                                <h6 class="post-author-name">
-                                                                    <a class="hover-flip-item-wrapper" href="author.html">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="Ismat Jahan">Ismat Jahan</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </h6>
-                                                                <ul class="post-meta-list">
-                                                                    <li>Feb 17, 2019</li>
-                                                                    <li>300k Views</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <ul class="social-share-transparent justify-content-end">
-                                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                            <li><a href="#"><i class="fas fa-link"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Start Post Grid  -->
-                                    </div>
-                                    <div class="col-xl-5 col-lg-5 col-md-12 col-12">
-                                        <div class="row">
-                                            <div class="col-xl-12 col-lg-12 col-md-6 col-12">
-                                                <!-- Start Post Grid  -->
-                                                <div class="content-block post-grid mt--30">
-                                                    <div class="post-thumbnail">
-                                                        <a href="post-details.html">
-                                                            <img src="{{asset('frontend/assets/images/post-images/post-grid-02.jpg')}}" alt="Post Images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-grid-content">
-                                                        <div class="post-content">
-                                                            <div class="post-cat">
-                                                                <div class="post-cat-list">
-                                                                    <a class="hover-flip-item-wrapper" href="#">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="LIFESTYLE">LIFESTYLE</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <h4 class="title"><a href="post-details.html">The underrated
-                                                                    design book
-                                                                    that transformed the</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Start Post Grid  -->
-                                            </div>
-                                            <div class="col-xl-12 col-lg-12 col-md-6 col-12">
-                                                <!-- Start Post Grid  -->
-                                                <div class="content-block post-grid mt--30">
-                                                    <div class="post-thumbnail">
-                                                        <a href="post-details.html">
-                                                            <img src="{{asset('frontend/assets/images/post-images/post-grid-03.jpg')}}" alt="Post Images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-grid-content">
-                                                        <div class="post-content">
-                                                            <div class="post-cat">
-                                                                <div class="post-cat-list">
-                                                                    <a class="hover-flip-item-wrapper" href="#">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="TRAVEL">TRAVEL</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <h4 class="title"><a href="post-details.html">Apple reimagines
-                                                                    the
-                                                                    iPhone experience with iOS 14 </a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Start Post Grid  -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Tab Content  -->
-
-                            <!-- Start Single Tab Content  -->
-                            <div class="single-post-grid tab-pane fade" id="gridthree" role="tabpanel">
-                                <div class="row">
-                                    <div class="col-xl-7 col-lg-7 col-md-12 col-12">
-                                        <!-- Start Post Grid  -->
-                                        <div class="content-block post-grid post-grid-large mt--30">
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="{{asset('frontend/assets/images/post-images/post-grid-09.jpg')}}" alt="Post Images">
-                                                </a>
-                                            </div>
-                                            <div class="post-grid-content">
-                                                <div class="post-content">
-                                                    <div class="post-cat">
-                                                        <div class="post-cat-list">
-                                                            <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="DESIGN">DESIGN</span>
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="title"><a href="post-details.html">Get Ready To Up Your
-                                                            Creative Game With The New DJI Mavic Air 2</a></h3>
-                                                    <div class="post-meta-wrapper">
-                                                        <div class="post-meta">
-                                                            <div class="post-author-avatar border-rounded">
-                                                                <img src="{{asset('frontend/assets/images/post-images/author/author-image-2.png')}}" alt="Author Images">
-                                                            </div>
-                                                            <div class="content">
-                                                                <h6 class="post-author-name">
-                                                                    <a class="hover-flip-item-wrapper" href="author.html">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="Ismat Jahan">Ismat Jahan</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </h6>
-                                                                <ul class="post-meta-list">
-                                                                    <li>Feb 17, 2019</li>
-                                                                    <li>300k Views</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <ul class="social-share-transparent justify-content-end">
-                                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                            <li><a href="#"><i class="fas fa-link"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Start Post Grid  -->
-                                    </div>
-                                    <div class="col-xl-5 col-lg-5 col-md-12 col-12">
-                                        <div class="row">
-                                            <div class="col-xl-12 col-lg-12 col-md-6 col-12">
-                                                <!-- Start Post Grid  -->
-                                                <div class="content-block post-grid mt--30">
-                                                    <div class="post-thumbnail">
-                                                        <a href="post-details.html">
-                                                            <img src="{{asset('frontend/assets/images/post-images/post-grid-07.jpg')}}" alt="Post Images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-grid-content">
-                                                        <div class="post-content">
-                                                            <div class="post-cat">
-                                                                <div class="post-cat-list">
-                                                                    <a class="hover-flip-item-wrapper" href="#">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="LIFESTYLE">LIFESTYLE</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <h4 class="title"><a href="post-details.html">The underrated
-                                                                    design book
-                                                                    that transformed the</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Start Post Grid  -->
-                                            </div>
-                                            <div class="col-xl-12 col-lg-12 col-md-6 col-12">
-                                                <!-- Start Post Grid  -->
-                                                <div class="content-block post-grid mt--30">
-                                                    <div class="post-thumbnail">
-                                                        <a href="post-details.html">
-                                                            <img src="{{asset('frontend/assets/images/post-images/post-grid-08.jpg')}}" alt="Post Images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-grid-content">
-                                                        <div class="post-content">
-                                                            <div class="post-cat">
-                                                                <div class="post-cat-list">
-                                                                    <a class="hover-flip-item-wrapper" href="#">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="TRAVEL">TRAVEL</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <h4 class="title"><a href="post-details.html">Apple reimagines
-                                                                    the
-                                                                    iPhone experience with iOS 14 </a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Start Post Grid  -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Tab Content  -->
-
-                            <!-- Start Single Tab Content  -->
-                            <div class="single-post-grid tab-pane fade" id="gridfour" role="tabpanel">
-                                <div class="row">
-                                    <div class="col-xl-7 col-lg-7 col-md-12 col-12">
-                                        <!-- Start Post Grid  -->
-                                        <div class="content-block post-grid post-grid-large mt--30">
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="{{asset('frontend/assets/images/post-images/post-grid-01.jpg')}}" alt="Post Images">
-                                                </a>
-                                            </div>
-                                            <div class="post-grid-content">
-                                                <div class="post-content">
-                                                    <div class="post-cat">
-                                                        <div class="post-cat-list">
-                                                            <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="DESIGN">DESIGN</span>
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="title"><a href="post-details.html">Get Ready To Up Your
-                                                            Creative Game With The New DJI Mavic Air 2</a></h3>
-                                                    <div class="post-meta-wrapper">
-                                                        <div class="post-meta">
-                                                            <div class="post-author-avatar border-rounded">
-                                                                <img src="{{asset('frontend/assets/images/post-images/author/author-image-2.png')}}" alt="Author Images">
-                                                            </div>
-                                                            <div class="content">
-                                                                <h6 class="post-author-name">
-                                                                    <a class="hover-flip-item-wrapper" href="author.html">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="Ismat Jahan">Ismat Jahan</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </h6>
-                                                                <ul class="post-meta-list">
-                                                                    <li>Feb 17, 2019</li>
-                                                                    <li>300k Views</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <ul class="social-share-transparent justify-content-end">
-                                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                            <li><a href="#"><i class="fas fa-link"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Start Post Grid  -->
-                                    </div>
-                                    <div class="col-xl-5 col-lg-5 col-md-12 col-12">
-                                        <div class="row">
-                                            <div class="col-xl-12 col-lg-12 col-md-6 col-12">
-                                                <!-- Start Post Grid  -->
-                                                <div class="content-block post-grid mt--30">
-                                                    <div class="post-thumbnail">
-                                                        <a href="post-details.html">
-                                                            <img src="{{asset('frontend/assets/images/post-images/post-grid-02.jpg')}}" alt="Post Images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-grid-content">
-                                                        <div class="post-content">
-                                                            <div class="post-cat">
-                                                                <div class="post-cat-list">
-                                                                    <a class="hover-flip-item-wrapper" href="#">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="LIFESTYLE">LIFESTYLE</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <h4 class="title"><a href="post-details.html">The underrated
-                                                                    design book
-                                                                    that transformed the</a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Start Post Grid  -->
-                                            </div>
-                                            <div class="col-xl-12 col-lg-12 col-md-6 col-12">
-                                                <!-- Start Post Grid  -->
-                                                <div class="content-block post-grid mt--30">
-                                                    <div class="post-thumbnail">
-                                                        <a href="post-details.html">
-                                                            <img src="{{asset('frontend/assets/images/post-images/post-grid-03.jpg')}}" alt="Post Images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-grid-content">
-                                                        <div class="post-content">
-                                                            <div class="post-cat">
-                                                                <div class="post-cat-list">
-                                                                    <a class="hover-flip-item-wrapper" href="#">
-                                                                        <span class="hover-flip-item">
-                                                                            <span data-text="TRAVEL">TRAVEL</span>
-                                                                        </span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <h4 class="title"><a href="post-details.html">Apple reimagines
-                                                                    the
-                                                                    iPhone experience with iOS 14 </a></h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Start Post Grid  -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Tab Content  -->
 
                         </div>
                         <!-- End Tab Content  -->
