@@ -102,6 +102,9 @@ Route::controller(BlogPostController::class)->group(function(){
   Route::get('/blog/details/{slug}', 'BlogDetails');
   Route::get('/blog/category/list/{id}', 'categoryList');
 
+
+  Route::get('/all/post', 'AllPost')->name('all.post');
+
   
 
 });

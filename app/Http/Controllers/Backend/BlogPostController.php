@@ -173,4 +173,14 @@ public function DeleteBlogPost($id){
 
 
 
+
+public function AllPost(){
+
+   return view('frontend.blog.all_post');
+
+
+}//end method
+
+
+
 }
