@@ -55,6 +55,30 @@
 						              </div>
 						            </div> 
                                     <input type="hidden"  id="long_desc" name="long_desc" value="">
+
+
+									<div class="row g-3">
+									<div class="col-md-6">
+										<div class="form-check">
+											<input class="form-check-input" name="slider" type="checkbox" value="1" {{ $post->slider ==1 ? 'checked' : '' }} >
+											<label class="form-check-label" for="flexCheckDefault">Slider</label>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="form-check">
+											<input class="form-check-input" name="featured" type="checkbox" value="1" {{ $post->featured ==1 ? 'checked' : '' }}>
+											<label class="form-check-label" for="flexCheckDefault">Featured</label>
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="form-check">
+											<input class="form-check-input" name="popular" type="checkbox" value="1" {{ $post->popular ==1 ? 'checked' : '' }}>
+											<label class="form-check-label" for="flexCheckDefault">Popular</label>
+										</div>
+									</div>
+									</div>
                                     
 
                                    
