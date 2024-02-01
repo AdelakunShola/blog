@@ -28,8 +28,10 @@
 							<div class="col-lg-8">
 								<div class="card">
 									<div class="card-body">
-                                        <form action="{{ route('admin.profile.store') }}"  method="post"  enctype="multipart/form-data" >
+                                        <form action="{{ route('site.settings.update') }}"  method="post"  enctype="multipart/form-data" >
                                             @csrf
+
+                                            <input type="hidden" name="id" value="{{ $site->id }}">
 										
 										<div class="row mb-3">
 											<div class="col-sm-3">
@@ -91,7 +93,7 @@
 												<h6 class="mb-0"> </h6>
 											</div>
 											<div class="col-sm-9 text-secondary">
-                                            <img id="showImage" src="{{ (!empty($site->site_logo)) ? url('upload/admin_images/'.$site->site_logo) : url('upload/no_image.jpg') }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="80">
+                                            <img id="showImage" src="{{ (!empty($site->site_logo)) ? url('/'.$site->site_logo) : url('upload/no_image.jpg') }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="80">
 											</div>
 										</div>
 

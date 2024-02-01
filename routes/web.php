@@ -92,6 +92,7 @@ Route::controller(CommentController::class)->group(function(){
 Route::controller(SiteSettingsController::class)->group(function(){
 
   Route::get('/all/site/settings', 'SiteSettings')->name('all.site.settings');
+  Route::post('/site/settings/update', 'SiteSettingsUpdate')->name('site.settings.update');
 
   
 
