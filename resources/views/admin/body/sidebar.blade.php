@@ -76,16 +76,21 @@
 				
 				<li>
 					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='bx bx-cart'></i>
+						<div class="parent-icon"><i class="bx bx-category"></i>
 						</div>
-						<div class="menu-title">eCommerce</div>
+						<div class="menu-title">Manage Site Settings</div>
 					</a>
 					<ul>
-						<li> <a href="ecommerce-products.html"><i class='bx bx-radio-circle'></i>Products</a>
+						<li> <a href="{{ route('all.site.settings') }}"><i class='bx bx-radio-circle'></i>All Site Settings</a>
+						
 						</li>
+						
 						
 					</ul>
 				</li>
+
+
+
 				<li>
 					<a class="has-arrow" href="javascript:;">
 						<div class="parent-icon"><i class='bx bx-bookmark-heart'></i>

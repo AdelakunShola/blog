@@ -7,8 +7,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CommentController;
-
-
+use App\Http\Controllers\Backend\SiteSettingsController;
 
 //Route::get('/', function () {
   //  return view('welcome');
@@ -83,6 +82,18 @@ Route::controller(CommentController::class)->group(function(){
 
   Route::get('/all/comment', 'AllComment')->name('all.comment');
   Route::post('/update/comment/status', 'UpdateComment')->name('update.comment.status');
+
+});
+
+
+
+
+//Ste Settings All routes
+Route::controller(SiteSettingsController::class)->group(function(){
+
+  Route::get('/all/site/settings', 'SiteSettings')->name('all.site.settings');
+
+  
 
 });
 
