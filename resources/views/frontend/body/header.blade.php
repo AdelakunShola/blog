@@ -1,3 +1,8 @@
+@php
+
+$site = App\Models\SiteSettings::find(1);
+
+@endphp
 <!-- Start Header -->
 <header class="header axil-header  header-light header-sticky ">
             <div class="header-wrap">
@@ -5,8 +10,8 @@
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-12">
                         <div class="logo">
                             <a href="index.html">
-                                <img class="dark-logo" src="{{asset('frontend/assets/images/logo/logo-black.png')}}" alt="Blogar logo">
-                                <img class="light-logo" src="{{asset('frontend/assets/images/logo/logo-white2.png')}}" alt="Blogar logo">
+                                <img class="dark-logo" src="{{asset($site->site_logo)}}" alt="Blogar logo" style="width: 90px; height:180px;">
+                                <img class="light-logo" src="{{asset($site->site_logo)}}" alt="Blogar logo">
                             </a>
                         </div>
                     </div>

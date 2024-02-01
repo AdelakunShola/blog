@@ -1,3 +1,8 @@
+@php
+
+$site = App\Models\SiteSettings::find(1);
+
+@endphp
  <!-- Start Footer Area  -->
  <div class="axil-footer-area axil-footer-style-1 footer-variation-2">
             <div class="footer-mainmenu">
@@ -117,8 +122,8 @@
                         <div class="col-lg-4 col-md-4">
                             <div class="logo">
                                 <a href="index.html">
-                                    <img class="dark-logo" src="assets/images/logo/logo-black.png" alt="Logo Images">
-                                    <img class="white-logo" src="assets/images/logo/logo-white2.png" alt="Logo Images">
+                                    <img class="dark-logo" src="{{asset($site->site_logo)}}" alt="Logo Images">
+                                    <img class="white-logo" src="{{asset($site->site_logo)}}" alt="Logo Images">
                                 </a>
                             </div>
                         </div>
@@ -128,10 +133,10 @@
                             <div class="d-flex justify-content-start mt_sm--15 justify-content-md-end align-items-center flex-wrap">
                                 <h5 class="follow-title mb--0 mr--20">Follow Us</h5>
                                 <ul class="social-icon color-tertiary md-size justify-content-start">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="{{ $site->facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="{{ $site->instagram }}"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="{{ $site->twitter }}"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="{{ $site->youtube }}"><i class="fab fa-youtube"></i></a></li>
                                 </ul>
                             </div>
                             <!-- End Post List  -->
