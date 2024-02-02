@@ -12,7 +12,7 @@ class UserController extends Controller
     public function Index(){
 
         return view('frontend.index');
-
+ 
     }//end method
 
     public function EditProfile(){

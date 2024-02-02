@@ -9,9 +9,9 @@ $site = App\Models\SiteSettings::find(1);
                 <div class="row justify-content-between align-items-center">
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-12">
                         <div class="logo">
-                            <a href="index.html">
-                                <img class="dark-logo" src="{{asset($site->site_logo)}}" alt="Blogar logo" style="width: 90px; height:180px;">
-                                <img class="light-logo" src="{{asset($site->site_logo)}}" alt="Blogar logo">
+                            <a href="/">
+                                <img class="dark-logo" src="{{asset($site->site_logo)}}" alt="" style="width: 100px; height:300px;">
+                                <img class="light-logo" src="{{asset($site->site_logo)}}" alt="" style="width: 100px; height:300px;">
                             </a>
                         </div>
                     </div>
@@ -25,8 +25,8 @@ $site = App\Models\SiteSettings::find(1);
 
                                     <li><a href="/">Home</a></li>
                                     <li><a href="{{ route('all.post') }}">All Posts</a></li>
-                                    <li><a href="home-tech-blog.html">About</a></li>
-                                    <li><a href="home-tech-blog.html">Contact</a></li>
+                                    <li><a href="/">About</a></li>
+                                    <li><a href="/">Contact</a></li>
 
                                     
 
@@ -55,10 +55,11 @@ $site = App\Models\SiteSettings::find(1);
                                 </form>
                             </div>
 
-
+ 
                             <ul class="metabar-block">
                           
                  @auth
+
 
                  <li style="display: inline-block;"><a href="{{ route('dashboard') }}"><img src="{{ (!empty($profileData->photo)) ? url('upload/user_images/'.$profileData->photo) : url('upload/no_image.jpg') }}" alt="Author Images"></a></li>
                  
